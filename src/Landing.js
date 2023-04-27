@@ -82,7 +82,7 @@ const ItemList = ({ items, currentPage, itemsPerPage }) => {
 
   return (
     <div style={{
-    
+    display:'flex'
     }}>
       {currentItems.map((item) => (
         <Item content={item.content} category={item.category}/>
@@ -94,7 +94,7 @@ const ItemList = ({ items, currentPage, itemsPerPage }) => {
 const App = () => {
   const [items, setItems] = useState([]); // array of items
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
