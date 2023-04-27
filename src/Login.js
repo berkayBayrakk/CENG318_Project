@@ -57,7 +57,7 @@ function LoginArea(props){
         alert('Email is not exist');
         isValid=false;
       }
-      if(user?.password!==password){
+      if(isValid && user?.password!==password){
         alert('Password is not correct');
         isValid=false;
       }
