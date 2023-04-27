@@ -1,4 +1,5 @@
 import LoginPage from './Login';
+import Landing from './Landing';
 import {
     Route,
     Link,
@@ -9,7 +10,7 @@ export default function App(){
     <div>
  <Routes>
             <Route exact path="/" element={<LoginPage/>} />
-            <Route path="/main" element={<div>asdasdasdas</div>} />
+            <Route path="/main" element={<Landing/>} />
           </Routes>
     </div>)
 }
