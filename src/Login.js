@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import login from './images/login.png';
 import logo from './images/logo.png';
 import { accounts } from './mock_db';
+import { useNavigate } from 'react-router-dom';
 export default function LoginPage() {
 
   const [isLogin,setIsLogin]=useState(true);
+
+  const navigation=useNavigate();
+
   return (
     <div
       style={{
@@ -32,7 +36,7 @@ export default function LoginPage() {
           <img src={logo} alt="Logo" style={{ width: '100%' }} />
           <p style={{ marginTop: '20px', fontSize: '24px' }}>Fast Poll !!</p>
         </div>
-        {isLogin?<LoginArea setIsLogin={setIsLogin}/>:<SignUpArea setIsLogin={setIsLogin}/>}
+        {isLogin?<LoginArea setIsLogin={setIsLogin} navigation={navigation}/>:<SignUpArea setIsLogin={setIsLogin}/>}
       </div>
     </div>
   );
@@ -44,20 +48,23 @@ function LoginArea(props){
 
   return(<div style={{ flex: 1 }}>
     <h2>Welcome back!</h2>
-    <form style={{ display: 'flex', flexDirection: 'column' } } onsubmit={(event)=>{
+    <form style={{ display: 'flex', flexDirection: 'column' } } onSubmit={(event)=>{
       event.preventDefault();
       let isValid=true;
+      console.log(12);
       const user=accounts.find((u)=>(u.email===email));
       if(!user){
         alert('Email is not exist');
         isValid=false;
       }
-      if(user.password===password){
+      if(user?.password!==password){
         alert('Password is not correct');
         isValid=false;
       }
+
       if(isValid){
         //navigation !!!
+        props.navigation('/main');
       }
     }}>
       <label htmlFor="email">Email:</label>
