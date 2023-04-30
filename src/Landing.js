@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import Item from './Item';
+import Avatar from './images/avatar.png';
 import { itemList } from './mock_db';
 
 const Navbar = () => {
@@ -40,7 +41,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-right">
           <div className="navbar-avatar">
-            <img src="avatar.png" alt="Avatar" className="navbar-avatar-img" />
+            <img src={Avatar} alt="Avatar" className="navbar-avatar-img" />
             <div className="navbar-avatar-menu">
               <ul>
                 <li onClick={handleHelp}>Help</li>
