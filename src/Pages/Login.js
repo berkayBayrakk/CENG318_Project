@@ -4,6 +4,8 @@ import logo from '../images/logo.png';
 import { accounts } from '../mock_db';
 import { Link, useNavigate } from 'react-router-dom';
 import { CredentialContext } from '../Providers/Credentials';
+import './Login.css';
+
 export default function LoginPage() {
 
   const [isLogin,setIsLogin]=useState(true);
@@ -13,31 +15,13 @@ export default function LoginPage() {
   const { loginFunction, userCredentials } = useContext(CredentialContext);
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${login})`,
-        backgroundSize: 'cover',
-       
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
+    <div className='background-pic'
+      style={{ backgroundImage: `url(${login})` }}
     >
-      <div
-        style={{
-          width: '50%',
-          backgroundColor: 'white',
-          padding: '50px',
-          borderRadius: '10px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        <div style={{ flex: 1 }}>
+      <div className='login-logo'>
+        <div className='first'>
           <img src={logo} alt="Logo" style={{ width: '100%' }} />
-          <p style={{ marginTop: '50px', fontSize: '24px' }}>Fast Poll !!</p>
+          <p>Votio !!</p>
         </div>
         {isLogin?<LoginArea setIsLogin={setIsLogin} navigation={navigation} loginFunction={loginFunction}/>:<SignUpArea setIsLogin={setIsLogin}/>}
       </div>
@@ -50,20 +34,13 @@ function LoginArea(props){
   const [password,setPassword]=useState('');
   const { loginFunction, userCredentials } = useContext(CredentialContext);
 
-  return(<div style={{ flex: 1 }}>
-<div style={{
-display:'flex',
-justifyContent:'center',
-marginBottom:'140px'
-}}>
-
-  <h2 style={{
-      
-    }}>Welcome back!</h2>
+  return(<div className='right-side'>
+<div className='headline'>
+  <h2>Welcome back!</h2>
 </div>
 
 <div>
-<form style={{ display: 'flex', flexDirection: 'column', } } onSubmit={(event)=>{
+<form className='form' onSubmit={(event)=>{
       event.preventDefault();
       let isValid=true;
       const user=accounts.find((u)=>(u.email===email));
@@ -86,19 +63,14 @@ marginBottom:'140px'
       }
     }}>
       <label htmlFor="email">Email:</label>
-      <input type="email" id="email" name="email" required onChange={(e)=>{setEmail(e.target.value)}}/>
+      <input type="email" id="email" name="email" placeholder="example@mail.com" required onChange={(e)=>{setEmail(e.target.value)}}/>
       <label htmlFor="password">Password:</label>
       <input type="password" id="password" name="password" required onChange={(e)=>{setPassword(e.target.value)}}/>
      
       <button type="submit">Login</button>
-      <div 
-      style={{
-        flexDirection:'row',
-        display:'flex',
-        alignItems:'center'
-      }}>
-        <p>Do not have an account</p>
-      <Link type="button" 
+      <div className='another-form'>
+        <p>Do not have an account?</p>
+      <Link type="button" className='link'
       onClick={()=>{
         props.setIsLogin(false);
       }}>Sign up</Link>
@@ -114,13 +86,9 @@ function SignUpArea(props){
   const [password,setPassword]=useState('');
   const [confirm,setConfirm]=useState('');
 
-  return(<div style={{ flex: 1 }}>
-    <h2 style={{
-      display:'flex',
-      justifyContent:'center',
-      marginBottom:'140px'
-    }}>Sign Up, Create Your First Poll</h2>
-    <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={(event)=>{
+  return(<div className='right-side'>
+    <h2 className='headline'>Sign Up, Create Your First Poll</h2>
+    <form className='form' onSubmit={(event)=>{
       event.preventDefault();
       let isValid=true;
       if(password!==confirm){
@@ -141,21 +109,16 @@ function SignUpArea(props){
       }
     }}>
       <label htmlFor="email">Email:</label>
-      <input type="email" id="email" name="email" required onChange={(e)=>{setEmail(e.target.value)}}/>
+      <input type="email" id="email" name="email" placeholder="example@mail.com" required onChange={(e)=>{setEmail(e.target.value)}}/>
       <label htmlFor="password">Password:</label>
       <input type="password" id="password" name="password" required onChange={(e)=>{setPassword(e.target.value)}}/>
       <label htmlFor="password">Confirm Password:</label>
       <input type="password" id="password" name="password" required onChange={(e)=>{setConfirm(e.target.value)}}/>
     
       <button type="submit">Sign Up</button>
-      <div 
-      style={{
-        flexDirection:'row',
-        display:'flex',
-        alignItems:'center'
-      }}>
-        <p >You have already have an account</p>
-      <Link type="button"
+      <div className='another-form'>
+        <p >You already have an account?</p>
+      <Link type="button" className='link'
       onClick={()=>{
         props.setIsLogin(true);
       }}>Login</Link>
