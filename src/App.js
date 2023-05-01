@@ -1,16 +1,20 @@
-import LoginPage from './Login';
-import Landing from './Landing';
+import LoginPage from './Pages/Login';
+import Landing from './Pages/Landing';
 import {
     Route,
     Link,
     Routes
   } from 'react-router-dom'
+import { CredentialProvider } from './Providers/Credentials';
 export default function App(){
     return (
     <div>
- <Routes>
+      <CredentialProvider>
+          <Routes>
             <Route exact path="/" element={<LoginPage/>} />
             <Route path="/main" element={<Landing/>} />
           </Routes>
+      </CredentialProvider>
+         
     </div>)
 }

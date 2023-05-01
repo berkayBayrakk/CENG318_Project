@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import login from './images/login.png';
-import logo from './images/logo.png';
-import { accounts } from './mock_db';
+import React, { useState,useContext } from 'react';
+import login from '../images/login.png';
+import logo from '../images/logo.png';
+import { accounts } from '../mock_db';
 import { Link, useNavigate } from 'react-router-dom';
+import { CredentialContext } from '../Providers/Credentials';
 export default function LoginPage() {
 
   const [isLogin,setIsLogin]=useState(true);
 
   const navigation=useNavigate();
+  
+  const { loginFunction, userCredentials } = useContext(CredentialContext);
 
   return (
     <div
@@ -36,7 +39,7 @@ export default function LoginPage() {
           <img src={logo} alt="Logo" style={{ width: '100%' }} />
           <p style={{ marginTop: '50px', fontSize: '24px' }}>Fast Poll !!</p>
         </div>
-        {isLogin?<LoginArea setIsLogin={setIsLogin} navigation={navigation}/>:<SignUpArea setIsLogin={setIsLogin}/>}
+        {isLogin?<LoginArea setIsLogin={setIsLogin} navigation={navigation} loginFunction={loginFunction}/>:<SignUpArea setIsLogin={setIsLogin}/>}
       </div>
     </div>
   );
@@ -45,6 +48,7 @@ export default function LoginPage() {
 function LoginArea(props){
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
+  const { loginFunction, userCredentials } = useContext(CredentialContext);
 
   return(<div style={{ flex: 1 }}>
 <div style={{
@@ -74,7 +78,11 @@ marginBottom:'140px'
 
       if(isValid){
         //navigation !!!
-        props.navigation('/main');
+        props.loginFunction({email,password});
+        setTimeout(()=>{
+          props.navigation('/main');
+
+        },500);
       }
     }}>
       <label htmlFor="email">Email:</label>
