@@ -80,7 +80,6 @@ const Pagination = ({ Direction, onPageChange, pageCount, currentPage,itemLength
   left:0
   }:{display:((currentPage===1 && Direction==='Left')||(currentPage===itemLength && Direction==='Right'))?'none':'flex',width:100,height:100 ,position:'absolute',
   right:0}
-  const pageNumbers = Array.from({ length: pageCount}, (_, i) => i + 1);
 
   const handlePageClick = (pageNumber) => {
     onPageChange(pageNumber);

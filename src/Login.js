@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import login from './images/login.png';
 import logo from './images/logo.png';
 import { accounts } from './mock_db';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export default function LoginPage() {
 
   const [isLogin,setIsLogin]=useState(true);
@@ -15,7 +15,7 @@ export default function LoginPage() {
         backgroundImage: `url(${login})`,
         backgroundSize: 'cover',
        
-        height: '100vh',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
@@ -34,7 +34,7 @@ export default function LoginPage() {
       >
         <div style={{ flex: 1 }}>
           <img src={logo} alt="Logo" style={{ width: '100%' }} />
-          <p style={{ marginTop: '20px', fontSize: '24px' }}>Fast Poll !!</p>
+          <p style={{ marginTop: '50px', fontSize: '24px' }}>Fast Poll !!</p>
         </div>
         {isLogin?<LoginArea setIsLogin={setIsLogin} navigation={navigation}/>:<SignUpArea setIsLogin={setIsLogin}/>}
       </div>
@@ -47,11 +47,21 @@ function LoginArea(props){
   const [password,setPassword]=useState('');
 
   return(<div style={{ flex: 1 }}>
-    <h2>Welcome back!</h2>
-    <form style={{ display: 'flex', flexDirection: 'column' } } onSubmit={(event)=>{
+<div style={{
+display:'flex',
+justifyContent:'center',
+marginBottom:'140px'
+}}>
+
+  <h2 style={{
+      
+    }}>Welcome back!</h2>
+</div>
+
+<div>
+<form style={{ display: 'flex', flexDirection: 'column', } } onSubmit={(event)=>{
       event.preventDefault();
       let isValid=true;
-      console.log(12);
       const user=accounts.find((u)=>(u.email===email));
       if(!user){
         alert('Email is not exist');
@@ -71,20 +81,23 @@ function LoginArea(props){
       <input type="email" id="email" name="email" required onChange={(e)=>{setEmail(e.target.value)}}/>
       <label htmlFor="password">Password:</label>
       <input type="password" id="password" name="password" required onChange={(e)=>{setPassword(e.target.value)}}/>
+     
+      <button type="submit">Login</button>
       <div 
       style={{
         flexDirection:'row',
         display:'flex',
+        alignItems:'center'
       }}>
         <p>Do not have an account</p>
-      <button type="button" 
+      <Link type="button" 
       onClick={()=>{
         props.setIsLogin(false);
-      }}>Sign up</button>
+      }}>Sign up</Link>
 
       </div>
-      <button type="submit">Login</button>
     </form>
+</div>
   </div>)
 }
 
@@ -94,7 +107,11 @@ function SignUpArea(props){
   const [confirm,setConfirm]=useState('');
 
   return(<div style={{ flex: 1 }}>
-    <h2>Sign Up, Create Your First Poll</h2>
+    <h2 style={{
+      display:'flex',
+      justifyContent:'center',
+      marginBottom:'140px'
+    }}>Sign Up, Create Your First Poll</h2>
     <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={(event)=>{
       event.preventDefault();
       let isValid=true;
@@ -121,19 +138,21 @@ function SignUpArea(props){
       <input type="password" id="password" name="password" required onChange={(e)=>{setPassword(e.target.value)}}/>
       <label htmlFor="password">Confirm Password:</label>
       <input type="password" id="password" name="password" required onChange={(e)=>{setConfirm(e.target.value)}}/>
+    
+      <button type="submit">Sign Up</button>
       <div 
       style={{
         flexDirection:'row',
         display:'flex',
+        alignItems:'center'
       }}>
-        <p>You have already have an account</p>
-      <button type="button"
+        <p >You have already have an account</p>
+      <Link type="button"
       onClick={()=>{
         props.setIsLogin(true);
-      }}>Login</button>
+      }}>Login</Link>
 
       </div>
-      <button type="submit">Sign Up</button>
     </form>
   </div>)
 }
