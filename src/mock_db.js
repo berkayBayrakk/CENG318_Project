@@ -8,54 +8,67 @@ export const accounts=[
 export const itemList=[
     {
         content:'1',
-        category:'c1'
+        category:'c1',
+        has:'admin@admin.com'
     },
     {
         content:'2',
-        category:'c2'
+        category:'c2',
+        has:'admin@admin.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'admin@admin.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'admin@admin.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'admin@admin.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'admin@admin.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'admin@admin.com'
     },
     {
         content:'1',
-        category:'c1'
+        category:'c1',
+        has:'admin@admin.com'
     },
     {
         content:'2',
-        category:'c2'
+        category:'c2',
+        has:'user@user.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'user@user.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'user@user.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'user@user.com'
     },
     {
         content:'3',
-        category:'c3'
+        category:'c3',
+        has:'user@user.com'
     },
 ]
