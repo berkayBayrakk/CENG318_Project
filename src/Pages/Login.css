@@ -15,7 +15,7 @@ h2 {
 
 .background-pic{
     background-size: cover;
-    background-image: linear-gradient(to bottom right, #0c8171, #2352d494);
+    background-image: linear-gradient(to bottom right, #18ddc3, #2352d494);
    
     height: 100%;
     display: flex;
