@@ -46,14 +46,14 @@ export const Navbar = () => {
       <nav className="navbar">
         <div className="navbar-left">
           <img src={Logo} alt="Logo" className="navbar-logo" />
-          <div className="navbar-search">
+        </div>
+        <div className="navbar-search">
             <input type="text" placeholder="Search Poll" value={searchQuery} onChange={handleSearch} />
-          </div>
+        </div>
+        <div className="navbar-right">
           <button className="navbar-create" onClick={handleCreate}>
             Create a New Poll
           </button>
-        </div>
-        <div className="navbar-right">
           <div className="navbar-avatar">
             <img src={Avatar} alt="Avatar" className="navbar-avatar-img" />
             <div className="navbar-avatar-menu">

@@ -1,6 +1,6 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
-    color:#0c2342;
+    color:#1d0e4d;
 }
 
 .headline {
@@ -55,8 +55,8 @@ input {
     font-size: 16px;
     margin: 10px 0;
     padding: 10px;
-    background-color: #e6f0fd;
-    border: 1px solid #a3c8f5;
+    background-color: #5b37c515;
+    border: 1px solid #5b37c550;
     border-radius: 8px;
 }
 
@@ -65,9 +65,9 @@ button {
     font-size: 16px;
     margin: 20px 0;
     padding: 10px;
-    background-color: #3f8ef5;
+    background-color: #5b37c5;
     color: white;
-    border: 1px solid #3f8ef5;
+    border: 1px solid #5b37c5;
     border-radius: 8px;
 }
 
@@ -82,8 +82,8 @@ button {
 }
 
 button:hover {
-    background-color: #65a3f5;
-    border: 1px solid #65a3f5;
+    background-color: #8762f8;
+    border: 1px solid #8762f8;
 }
 
 .right-side {
@@ -93,7 +93,7 @@ button:hover {
 .link {
     padding: 0 10px;
     text-decoration: none;
-    color: #3f8ef5;
+    color: #5b37c5;
     font-weight: 550;
 }
 

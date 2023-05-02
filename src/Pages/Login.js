@@ -49,7 +49,7 @@ function LoginArea(props){
       let isValid=true;
       const user=accounts.find((u)=>(u.email===email));
       if(!user){
-        alert('Email is not exist');
+        alert('Email does not exist');
         isValid=false;
       }
 
@@ -106,12 +106,12 @@ function SignUpArea(props){
       }
       const isExistMail=accounts.find((user)=>(user.email===email));
       if(isExistMail){
-        alert('Email has already using');
+        alert('Email is already in use');
         isValid=false;
       }
       if(isValid){
         accounts.push({email:email,password:password});
-        alert('You have successfully signed up, you will redirected to the login page');
+        alert('You have successfully signed up, you will be redirected to the login page');
         setTimeout(()=>{
           props.setIsLogin(true);
         },700)
