@@ -9,7 +9,18 @@ export const itemList=[
     {
         content:'1',
         category:'c1',
-        has:'admin@admin.com'
+        has:'admin@admin.com',
+        questions:[
+            {
+                text:'Ronaldo vs Messi',
+                choices:['Ronaldo','Messi']
+            },
+            {
+                text:'Nereye gidelim',
+                choices:['Izmir','Ankara','Bursa','Istanbul']
+            }
+
+        ]
     },
     {
         content:'2',

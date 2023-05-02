@@ -6,6 +6,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CredentialContext } from '../Providers/Credentials';
 import './Login.css';
 
+import {addDoc,collection} from '@firebase/firestore';
+import { fireStore } from '../firebase';
+
 export default function LoginPage() {
 
   const [isLogin,setIsLogin]=useState(true);
@@ -13,6 +16,7 @@ export default function LoginPage() {
   const navigation=useNavigate();
   
   const { loginFunction, userCredentials } = useContext(CredentialContext);
+
 
   return (
     <div className='background-pic'
@@ -32,7 +36,7 @@ export default function LoginPage() {
 function LoginArea(props){
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
-  const { loginFunction, userCredentials } = useContext(CredentialContext);
+  const ref=collection(fireStore,'userr');
 
   return(<div className='right-side'>
 <div className='headline'>
@@ -48,7 +52,12 @@ function LoginArea(props){
         alert('Email is not exist');
         isValid=false;
       }
+
       if(isValid && user?.password!==password){
+        addDoc(ref,user).then((obj)=>{
+          console.log(obj)
+          
+        });
         alert('Password is not correct');
         isValid=false;
       }
