@@ -1,6 +1,6 @@
 import React, { useState,useContext } from 'react';
 import login from '../images/login.png';
-import logo from '../images/logo.png';
+import logo from '../images/votio_logo_purple.png';
 import { accounts } from '../mock_db';
 import { Link, useNavigate } from 'react-router-dom';
 import { CredentialContext } from '../Providers/Credentials';
@@ -24,7 +24,7 @@ export default function LoginPage() {
     >
       <div className='login-logo'>
         <div className='first'>
-          <img src={logo} alt="Logo" style={{ width: '100%' }} />
+          <img src={logo} alt="Logo" style={{ width: '95%' }} />
           <p>Votio !!</p>
         </div>
         {isLogin?<LoginArea setIsLogin={setIsLogin} navigation={navigation} loginFunction={loginFunction}/>:<SignUpArea setIsLogin={setIsLogin}/>}
