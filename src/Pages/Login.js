@@ -20,7 +20,7 @@ export default function LoginPage() {
 
   return (
     <div className='background-pic'
-      style={{ backgroundImage: `url(${login})` }}
+      // style={{ backgroundImage: `url(${login})` }}
     >
       <div className='login-logo'>
         <div className='first'>

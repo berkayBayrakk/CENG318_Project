@@ -4,7 +4,9 @@
     align-items: center;
     height: 80px;
     padding: 0 20px;
-    background-image: linear-gradient(to bottom right, #460eee94, #0dc1ee9b);
+    /* background-image: linear-gradient(to bottom right, #460eee94, #0dc1ee9b); */
+    background-image: linear-gradient(to bottom right, #2352d494, #18ddc3);
+
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
