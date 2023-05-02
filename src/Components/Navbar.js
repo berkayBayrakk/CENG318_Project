@@ -2,6 +2,7 @@ import Avatar from '../images/avatar.png';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect,useContext, useState } from 'react';
 import {CredentialContext} from '../Providers/Credentials';
+import Logo from '../images/votio_logo_white.png';
 import './Navbar.css';
 
 export const Navbar = () => {
@@ -44,7 +45,7 @@ export const Navbar = () => {
     return (
       <nav className="navbar">
         <div className="navbar-left">
-          <img src="logo.png" alt="Logo" className="navbar-logo" />
+          <img src={Logo} alt="Logo" className="navbar-logo" />
           <div className="navbar-search">
             <input type="text" placeholder="Search Poll" value={searchQuery} onChange={handleSearch} />
           </div>
