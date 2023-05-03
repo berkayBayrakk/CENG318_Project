@@ -36,10 +36,10 @@ export const Navbar = () => {
 
     useEffect(()=>{
       console.log(userCredentials);
-
-      if(!userCredentials.isLogged){
-        navigation('/');
-      }
+      //TODO change after css changes
+      //if(!userCredentials.isLogged){
+        //navigation('/');
+     // }
     },[])
   
     return (
