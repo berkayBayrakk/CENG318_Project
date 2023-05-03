@@ -7,8 +7,8 @@ export const accounts=[
 
 export const itemList=[
     {
-        content:'1',
-        category:'c1',
+        content:'Who is the best futbol player',
+        category:'Futbol',
         has:'admin@admin.com',
         questions:[
             {
@@ -23,8 +23,18 @@ export const itemList=[
         ]
     },
     {
-        content:'2',
-        category:'c2',
+        content:'Who wins the election of 2023',
+        category:'Politics',
+        has:'admin@admin.com'
+    },
+    {
+        content:'Where will we go tonight',
+        category:'Life',
+        has:'admin@admin.com'
+    },
+    {
+        content:'What is your favourite food',
+        category:'Food',
         has:'admin@admin.com'
     },
     {
@@ -32,31 +42,9 @@ export const itemList=[
         category:'c3',
         has:'admin@admin.com'
     },
-    {
-        content:'3',
-        category:'c3',
-        has:'admin@admin.com'
-    },
-    {
-        content:'3',
-        category:'c3',
-        has:'admin@admin.com'
-    },
-    {
-        content:'3',
-        category:'c3',
-        has:'admin@admin.com'
-    },
-    {
-        content:'3',
-        category:'c3',
-        has:'admin@admin.com'
-    },
-    {
-        content:'1',
-        category:'c1',
-        has:'admin@admin.com'
-    },
+   
+   
+   
     {
         content:'2',
         category:'c2',
