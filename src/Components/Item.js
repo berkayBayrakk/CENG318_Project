@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Item.css';
 
-export default function Item(props) {
+export default function Item(props) { 
   const [copySuccess, setCopySuccess] = useState(false);
   const { content, category } = props;
 

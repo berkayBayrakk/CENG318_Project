@@ -7,7 +7,7 @@ export const ItemList = ({ items, currentPage, itemsPerPage }) => {
   
     return (
       <div style={{
-      display:'flex'
+      display:'flex',
       }}>
         {currentItems.map((item) => (
           <Item content={item.content} category={item.category}/>
