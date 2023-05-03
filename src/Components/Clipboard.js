@@ -3,7 +3,6 @@ import CopyImage from '../images/copy-text.png';
 
 export default function ClipboardCopy({ copyText }) {
     const [isCopied, setIsCopied] = useState(false);
-  
     // This is the function we wrote earlier
     async function copyTextToClipboard(text) {
       if ('clipboard' in navigator) {
@@ -12,7 +11,6 @@ export default function ClipboardCopy({ copyText }) {
         return document.execCommand('copy', true, text);
       }
     }
-  
     // onClick handler function for the copy button
     const handleCopyClick = () => {
       // Asynchronously call copyTextToClipboard
@@ -28,21 +26,26 @@ export default function ClipboardCopy({ copyText }) {
           console.log(err);
         });
     }
-  
     return (
-      <div style={{display:'flex'}}>
-        <input type="text" value={copyText} readOnly />
-        {/* Bind our handler function to the onClick button property */}
-        <div >
-        <button style={{padding:0}}>
-            <div onClick={handleCopyClick} style={{display:'flex' ,width:30,height:30}}>
-                <img src={CopyImage}>
-                </img>
+      <div style={{display:'flex' ,height:120}}>
+            <div style={{display:'flex',alignItems:'center',paddingRight:12}}>
+                <input type="text" value={copyText} readOnly style={{padding:0,margin:0}}/>
             </div>
+        {/* Bind our handler function to the onClick button property */}
+            <div style={{display:'flex',alignItems:'center',flexDirection:'column',height:80}}>
+                <button style={{padding:0,height:22}}>
+                    <div onClick={handleCopyClick} style={{display:'flex' ,width:30,height:30}}>
+                        <img src={CopyImage}/>
+                    </div>
+                    
+                </button>
+                <div style={{margin:2,padding:2}}>
+                <h6 style={{margin:0,padding:0}}>
+                    {(isCopied)?'Copied':'Copy'}
+                </h6>
+                </div>
             
-        </button>
-       
-        </div>
+            </div>
       </div>
     );
   }
