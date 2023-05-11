@@ -31,7 +31,7 @@ const App = () => {
   return (
     <div className="app">
       <Navbar />
-      <div className="content" style={{display:'flex', flexDirection:'column',height:'80%', justifyContent:'center'}}>
+      <div className="content" style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
       <h2>Your Polls</h2>
       <div className="sidebar" style={{display:'flex', flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
           

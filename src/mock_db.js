@@ -7,7 +7,9 @@ export const accounts=[
 
 export const itemList=[
     {
+        id:1,
         content:'Who is the best futbol player',
+        url:`https://ceng-318-project.vercel.app/poll:${12}`,
         category:'Futbol',
         has:'admin@admin.com',
         questions:[
