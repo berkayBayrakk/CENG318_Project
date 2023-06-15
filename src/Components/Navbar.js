@@ -22,7 +22,7 @@ export const Navbar = () => {
     };
   
     const handleCreate = () => {
-      // Handle create button click
+      navigation('/create-poll');
     };
   
     const handleHelp = () => {
