@@ -5,9 +5,7 @@ import { accounts } from '../mock_db';
 import { Link, useNavigate } from 'react-router-dom';
 import { CredentialContext } from '../Providers/Credentials';
 import './Login.css';
-
-import {addDoc,collection} from '@firebase/firestore';
-import { fireStore } from '../firebase';
+import {  deletePoll, getUsers } from '../firebase';
 
 export default function LoginPage() {
 
@@ -36,7 +34,6 @@ export default function LoginPage() {
 function LoginArea(props){
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
-  const ref=collection(fireStore,'userr');
 
   return(<div className='right-side'>
 <div className='headline'>
@@ -44,27 +41,26 @@ function LoginArea(props){
 </div>
 
 <div>
-<form className='form' onSubmit={(event)=>{
+<form className='form' onSubmit={async (event)=>{
       event.preventDefault();
       let isValid=true;
-      const user=accounts.find((u)=>(u.email===email));
+      const users=await getUsers()
+      const user=users.find((u)=>(u.email==email));
+      //deletePoll();
+
       if(!user){
         alert('Email does not exist');
         isValid=false;
       }
 
       if(isValid && user?.password!==password){
-        addDoc(ref,user).then((obj)=>{
-          console.log(obj)
-          
-        });
         alert('Password is not correct');
         isValid=false;
       }
-
+      const id=user.id;
       if(isValid){
         //navigation !!!
-        props.loginFunction({email,password});
+        props.loginFunction({email,password,id});
         setTimeout(()=>{
           props.navigation('/main');
 
