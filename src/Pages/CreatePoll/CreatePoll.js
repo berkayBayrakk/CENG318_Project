@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import "./CreatePoll.css";
 import { Navbar } from "../../Components/Navbar";
+import { getPolls, getUsers, savePoll } from "../../firebase";
+import {CredentialContext} from '../../Providers/Credentials';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CreatePoll = () => {
   const [pollName, setPollName] = useState("");
+  const [category, setCategory] = useState("");
   const [questions, setQuestions] = useState([""]);
   const [answers, setAnswers] = useState([["", ""]]);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
   const [showSettings, setShowSettings] = useState(false);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+
+  const { userCredentials } = useContext(CredentialContext);
+
+  const navigation=useNavigate();
+
 
   const addQuestion = () => {
     setQuestions([...questions, ""]);
@@ -47,6 +56,12 @@ const CreatePoll = () => {
             placeholder="Poll Name"
             value={pollName}
             onChange={(e) => setPollName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
           />
           {questions.map((q, index) => (
             <div key={index} className="question-item">
@@ -150,6 +165,41 @@ const CreatePoll = () => {
           )}
         </div>
       </div>
+
+      <div>
+        <button onClick={()=>{
+         const poll={};
+         if(!pollName || !category || !endDate || !startDate || 
+          questions.some((element) => element === '' || 
+          answers.some((list)=> list.some((element)=>element===''))) ){
+            alert('Missing Information')
+         }
+         else{
+          poll.name=pollName;
+          const pollQuestions=[]
+          questions.forEach((question,index)=>{
+           pollQuestions.push({title:question,answers:[...answers[index]]})
+           })
+          poll.questions=pollQuestions;
+          poll.startDate=startDate;
+          poll.endDate=endDate;
+          poll.category=category;
+          poll.creatorID=userCredentials.id;
+          savePoll(poll);
+          alert('Poll has been created');
+          setTimeout(()=>{
+            navigation('/main')
+          },1000)
+         
+         }
+         
+
+
+        } }>
+          Create Poll
+        </button>
+      </div>
+
     </div>
   );
 };
