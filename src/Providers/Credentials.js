@@ -14,13 +14,14 @@ export const CredentialContext = createContext(userCredentials);
 export const CredentialProvider = ({ children }) => {
     const [state, dispatch] = useReducer(Reducer, userCredentials);
 
-    function loginFunction({email,password}) {
+    function loginFunction({email,password,id}) {
         bcrypt.hash(password,10).then((hash)=>{
             dispatch({
                 type: 'LOGIN',
                 payload: {
                     email,
-                    hash
+                    hash,
+                    id
                 }
             });
         })
