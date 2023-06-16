@@ -4,7 +4,13 @@ import { itemList } from '../mock_db';
 import { Navbar } from '../Components/Navbar';
 import { ItemList } from '../Components/ItemList';
 import { CredentialContext } from '../Providers/Credentials';
-
+import { getPolls } from '../firebase';
+function shuffleList(list) {
+  for (let i = list.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [list[i], list[j]] = [list[j], list[i]];
+  }
+}
 const App = () => {
   const [items, setItems] = useState([]); // array of items
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,10 +26,23 @@ const App = () => {
   const handlePageChangeRandom = (pageNumber) => {
     setCurrentPageRandom(pageNumber);
   };
-  useEffect(()=>{
-    const userList=itemList.filter((item)=>item.has===userCredentials.email);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(()=>{ 
+    const fetchPoll= async () => {
+      return await getPolls()
+    }
+    fetchPoll().then((polls)=>{
+      const userList=(polls.filter((item)=>item.creatorID===userCredentials.id)).map((element)=>
+      {return {...element,url:element.id}}
+    );
+    const randomList=polls.map((element)=>{
+      return {...element,url:element.id}
+    });
+    shuffleList(randomList)
     setItems(userList);
-    setRandomItems(itemList);
+    setRandomItems(randomList);
+    });
+   
   },[])
   const pageCount = Math.ceil(items.length / itemsPerPage);
   const pageCountRandom = Math.ceil(randomItems.length / itemsPerPage);
