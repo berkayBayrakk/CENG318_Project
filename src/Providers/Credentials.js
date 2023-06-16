@@ -5,7 +5,8 @@ const userCredentials = {
     userCredentials:{
         isLogged:false,
         email:'',
-        password:''
+        password:'',
+        id:''
     }
 }
 
