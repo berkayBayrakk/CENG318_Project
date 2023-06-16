@@ -44,7 +44,7 @@ export const Navbar = () => {
   
     return (
       <nav className="navbar">
-        <div className="navbar-left">
+        <div className="navbar-left" onClick={()=>{navigation('/main')}}>
           <img src={Logo} alt="Logo" className="navbar-logo" />
         </div>
         <div className="navbar-search">
