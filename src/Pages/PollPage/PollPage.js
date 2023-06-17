@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 import { getAnswersByPollId, getPollById, saveAnswer } from "../../firebase";
 import { Navbar } from "../../Components/Navbar";
-
+import "./PollPage.css"
 
 export const PollPage = () => {
 
@@ -53,7 +53,7 @@ export const PollPage = () => {
   
     if(isSubmitted){
         return(
-            <div>
+            <div className="background-pic-poll">
                 {isEnded?<h1>
                    Poll is out of date
                 </h1>:<h1>
@@ -65,11 +65,11 @@ export const PollPage = () => {
     else{
         return (
      
-            <div>
+            <div className="background-pic-poll">
                  { (poll)?<h1>{poll.name}</h1>:null}
                { (poll)?<Questions questions={poll.questions} setUserAnswers={setAnswers}/> :null}
                <div>
-                <button onClick={handleSubmit}>Submit</button>
+                <button className="a" onClick={handleSubmit}>Submit</button>
                </div>
             </div>
         );
@@ -83,12 +83,12 @@ const Questions=(props)=>{
     return(
         props.questions.map((question,index)=>
 
-        <div>
+        <div style={{border: '2px solid black', borderRadius:'30px' , marginBottom:5}}>
             <div>
                 <h1>{question.title}</h1>
             </div>
             
-            <div>
+            <div style={{display:'flex' , justifyContent:'center'}}>
                 <Answers answers={question.answers} setUserAnswers={props.setUserAnswers} index={index}/>
             </div>
            
@@ -120,7 +120,7 @@ const Answers=(props)=>{
     return(
    
         props.answers.map((answer,index)=>(
-        <button style={(selectedAnswerIndex===index)?{color:'blue'}:{}} key={index} onClick={()=>handleClick(answer,index)}>{answer}</button>
+        <button className="a" style={(selectedAnswerIndex===index)?{color:'blue',marginLeft:15}:{marginLeft:15}} key={index} onClick={()=>handleClick(answer,index)}>{answer}</button>
     )
     )
     )

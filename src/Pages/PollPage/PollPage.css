@@ -1,0 +1,11 @@
+.background-pic-poll{
+    background-size: cover;
+    background-image: linear-gradient(to bottom right, #18ddc3, #2352d494);
+   
+    height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+    
+
+}
