@@ -18,6 +18,7 @@ const CreatePoll = () => {
   const { userCredentials } = useContext(CredentialContext);
 
   const navigation=useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
 
 
   const addQuestion = () => {
@@ -48,7 +49,7 @@ const CreatePoll = () => {
 
   return (
     <div className="create-poll-wrapper">
-      <Navbar />
+      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
       <div className="container">
         <div className="questions-section">
           <input

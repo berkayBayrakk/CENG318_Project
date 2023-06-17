@@ -5,21 +5,17 @@ import {CredentialContext} from '../Providers/Credentials';
 import Logo from '../images/votio_logo_white.png';
 import './Navbar.css';
 
-export const Navbar = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [searchQuery, setSearchQuery] = useState('');
+export const Navbar = (props) => {
+
 
     const { logoutFunction, userCredentials } = useContext(CredentialContext);
 
     const navigation=useNavigate();
 
     const handleSearch = (event) => {
-      setSearchQuery(event.target.value);
+      props.setSearchQuery(event.target.value);
     };
-  
-    const handlePageChange = (pageNumber) => {
-      setCurrentPage(pageNumber);
-    };
+
   
     const handleCreate = () => {
       navigation('/create-poll');
@@ -48,7 +44,7 @@ export const Navbar = () => {
           <img src={Logo} alt="Logo" className="navbar-logo" />
         </div>
         <div className="navbar-search">
-            <input type="text" placeholder="Search Poll" value={searchQuery} onChange={handleSearch} />
+            <input type="text" placeholder="Search Poll" value={props.searchQuery} onChange={handleSearch} />
         </div>
         <div className="navbar-right">
           <button className="navbar-create" onClick={handleCreate}>
