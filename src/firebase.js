@@ -23,17 +23,19 @@ const app = initializeApp(firebaseConfig);
 export const fireStore=getFirestore(app);
 const usersRef=collection(fireStore,'users');
 const pollsRef=collection(fireStore,'polls');
+const answerRef=collection(fireStore,'answer');
 
 export const saveUser=(user)=>{
-  
   addDoc(usersRef,user);
 }
 
 
 export const savePoll=(poll)=>{
-
   addDoc(pollsRef,poll);
- 
+}
+
+export const saveAnswer=(answer)=>{
+  addDoc(answerRef,answer);
 }
 
 export const getPolls=async()=>{
@@ -67,5 +69,14 @@ export const getPollById=async(id)=>{
   return await data.then((obj)=>{
    return  obj.docs.map((doc) => 
     ( {...doc.data(),id:doc.id})).find((element)=>(id==element.id));
+  })
+};
+
+
+export const getAnswersByPollId=async(id)=>{
+  const data = getDocs(answerRef);
+  return await data.then((obj)=>{
+   return  obj.docs.map((doc) => 
+    ( {...doc.data(),id:doc.id})).filter((element)=>(id==element.pollID));
   })
 };

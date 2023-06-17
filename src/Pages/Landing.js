@@ -33,10 +33,10 @@ const App = () => {
     }
     fetchPoll().then((polls)=>{
       const userList=(polls.filter((item)=>item.creatorID===userCredentials.id)).map((element)=>
-      {return {...element,url:element.id}}
+      {return {...element,url:`http://localhost:3000/poll/${element.id}`}}
     );
     const randomList=polls.map((element)=>{
-      return {...element,url:element.id}
+      return {...element,url:`http://localhost:3000/poll/${element.id}`}
     });
     shuffleList(randomList)
     setItems(userList);
