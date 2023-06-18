@@ -71,7 +71,7 @@ const App = () => {
       <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
       <div className="content" style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
       <h2>Your Polls</h2>
-      <div className="sidebar" style={{display:'flex', flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
+      <div className="sidebar" style={{display:'flex', flexDirection:'row',alignItems:'center',justifyContent:'center',height:'240px'}}>
           
           <Pagination Direction={'Left'} currentPage={currentPage} onPageChange={handlePageChange} pageCount={pageCount} itemLength={pageCount} />
 
