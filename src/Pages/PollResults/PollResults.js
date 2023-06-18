@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./PollResults.css"
 const PollResults = ({ questions, answers }) => {
   const calculatePercentages = (questionIndex) => {
     const answerCounts = {};
@@ -16,17 +16,21 @@ const PollResults = ({ questions, answers }) => {
 
   return (
     <div className="poll-results-container">
+      <h1>
+        Results
+      </h1>
       {questions.map((question, index) => (
         <div key={index} className="result-question-container">
           <h2>{question.title}</h2>
           <div className="percentage-bars-container">
             {calculatePercentages(index).map((result, idx) => (
               <div key={idx} className="percentage-bar">
+                <span>{`${result.answer} ${result.percentage.toFixed(2)}%`}</span>
+
                 <div
                   className="fill"
                   style={{ width: `${result.percentage}%` }}
                 ></div>
-                <span>{`${result.answer} ${result.percentage.toFixed(2)}%`}</span>
               </div>
             ))}
           </div>

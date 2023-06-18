@@ -23,9 +23,17 @@ export const PollPage = () => {
       setPoll(poll);
       setAnswers(Array(poll?.questions?.length).fill(""));
       getAnswersByPollId(pollID).then((array) => {
+        setFetchedAnswers(array);
         array.forEach((element) => {
-          if (element.pollID == pollID && element.userID == navigator.userAgent)
+          if (element.pollID == pollID && element.userID === navigator.userAgent){
             setIsSubmitted(true);
+            setIsEnded(true);
+             console.log(navigator.userAgent)
+             console.log(element.userID === navigator.userAgent)
+          }
+            
+
+
         });
         const date = new Date(poll.endDate.seconds * 1000);
         const currentDate = new Date();
@@ -57,11 +65,7 @@ export const PollPage = () => {
   if (isSubmitted) {
     return (
       <div className="background-pic-poll">
-        {isEnded ? (
           <PollResults questions={poll.questions} answers={fetchedAnswers} />
-        ) : (
-          <h1>You have already submitted this poll</h1>
-        )}
       </div>
     );
   } else {

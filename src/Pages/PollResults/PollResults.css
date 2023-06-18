@@ -23,9 +23,10 @@
   }
   
   .fill {
-    background-color: #4caf50;
-    height: 20px;
+    background-color: #239227;
+    height: 18px;
     border-radius: 5px;
+    display: flex;
   }
   
   .percentage-bar span {
