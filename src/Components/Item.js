@@ -7,6 +7,7 @@ export default function Item(props) {
 
   return (
     <div className="item">
+      
       <div className="content">{content}</div>
       <div className="category">{category}</div>
       <div className="actions" style={{display:'flex'}}>
