@@ -53,10 +53,10 @@ const App = () => {
   useEffect(()=>{
     console.log(polls)
     const userList=(polls.filter((item)=>(item.creatorID===userCredentials.id && item.name.includes(searchQuery)))).map((element)=>
-      {return {...element,url:`http://localhost:3000/poll/${element.id}`}}
+      {return {...element,url:`${window.location.hostname}/poll/${element.id}`}}
     );
     const randomList=(polls.filter((item)=>item.name.includes(searchQuery))).map((element)=>
-    {return {...element,url:`http://localhost:3000/poll/${element.id}`}}
+    {return {...element,url:`${window.location.hostname}/poll/${element.id}`}}
   );
     shuffleList(randomList)
     setItems(userList);
