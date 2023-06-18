@@ -1,0 +1,38 @@
+.poll-results-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+  }
+  
+  .result-question-container {
+    margin-bottom: 20px;
+  }
+  
+  .percentage-bars-container {
+    margin-top: 10px;
+  }
+  
+  .percentage-bar {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  
+  .fill {
+    background-color: #239227;
+    height: 18px;
+    border-radius: 5px;
+    display: flex;
+  }
+  
+  .percentage-bar span {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  

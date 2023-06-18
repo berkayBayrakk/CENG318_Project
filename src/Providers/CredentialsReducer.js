@@ -7,6 +7,7 @@ export const Reducer = (state, action) => {
                 userCredentials:{
                     email:action.payload.email,
                     password:action.payload.hash,
+                    id:action.payload.id,
                     isLogged:true
                 }
                
@@ -17,6 +18,7 @@ export const Reducer = (state, action) => {
                 userCredentials:{
                     email:'',
                     password:'',
+                    id:'',
                     isLogged:false
                 }
             };

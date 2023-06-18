@@ -7,16 +7,18 @@ import {
   } from 'react-router-dom'
 import { CredentialProvider } from './Providers/Credentials';
 import { useState } from 'react';
+import CreatePoll from './Pages/CreatePoll/CreatePoll';
+import { PollPage } from './Pages/PollPage/PollPage';
 export default function App(){
- const  [number,setNumber]=useState(0)
+
     return (
     <div>
       <CredentialProvider>
           <Routes>
             <Route exact path="/" element={<LoginPage/>} />
             <Route path="/main" element={<Landing/>} />
-            <Route path={`/poll:${number}`} element={<div>ASASASAS</div>} />
-
+            <Route path="/poll/:pollID" element={<PollPage/>} />
+            <Route path="/create-poll" element={<CreatePoll/>}/>
           </Routes>
       </CredentialProvider>
          
