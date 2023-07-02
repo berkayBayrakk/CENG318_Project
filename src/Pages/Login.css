@@ -71,6 +71,7 @@ button {
     border: 1px solid #5b37c5;
     border-radius: 8px;
     cursor: pointer;
+    transition: box-shadow .15s,transform .15s;
 }
 
 .another-form{
@@ -84,8 +85,15 @@ button {
 }
 
 button:hover {
-    background-color: #8762f8;
-    border: 1px solid #8762f8;
+    /* background-color: #7352d6;
+    border: 1px solid #7352d6; */
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #40278a 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: #40278a 0 3px 7px inset;
+  transform: translateY(2px);
 }
 
 .right-side {
