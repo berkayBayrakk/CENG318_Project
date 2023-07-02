@@ -61,6 +61,11 @@ input {
     border-radius: 8px;
 }
 
+input:focus {
+    outline-color: #5b37c5ab;
+    box-shadow: 0px 0px 12px 4px #866bd7;
+}
+
 button {
     font-weight: 600;
     font-size: 16px;
