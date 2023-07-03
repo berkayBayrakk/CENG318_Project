@@ -115,3 +115,78 @@ button:active {
 .link:hover {
     text-decoration: underline;
 }
+
+@media only screen and (max-width: 1030px){
+    .right-side {
+        font-size: 14px;
+    }
+
+    .login-logo {
+        flex-direction: column;
+    }
+
+    .first {
+        width: 90px;
+    }
+
+    .first p {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .headline {
+        margin-bottom: 25px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .right-side {
+        font-size: 12px;
+    }
+
+    .first {
+        width: 80px;
+    }
+
+    .first p {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .headline {
+        margin-bottom: 15px;
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+
+    .login-logo{
+        padding: 15px 25px 0px;
+        width:fit-content;
+    }
+
+    .first p {
+        display: none;
+    }
+
+    button {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+
+    .login-logo {
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    .background-pic{
+        background-image:none;
+    }
+}
