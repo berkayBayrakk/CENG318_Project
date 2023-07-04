@@ -53,12 +53,16 @@ export const PollPage = () => {
     if (answers.some((answer) => answer === ""))
       alert("You should fill all of questions");
     else {
+      getAnswersByPollId(pollID).then((array) => {
+        setFetchedAnswers(array);
+      });
       setIsSubmitted(true);
       const userAnswer = {};
       userAnswer.answers = answers;
       userAnswer.pollID = pollID;
       userAnswer.userID = navigator.userAgent;
       saveAnswer(userAnswer);
+      
     }
   };
 
