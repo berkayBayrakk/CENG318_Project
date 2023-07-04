@@ -5,7 +5,7 @@ import { accounts } from '../mock_db';
 import { Link, useNavigate } from 'react-router-dom';
 import { CredentialContext } from '../Providers/Credentials';
 import './Login.css';
-import {  deletePoll, getUsers } from '../firebase';
+import {  deletePoll, getUsers, saveUser } from '../firebase';
 
 export default function LoginPage() {
 
@@ -93,20 +93,21 @@ function SignUpArea(props){
 
   return(<div className='right-side'>
     <h2 className='headline'>Sign Up, Create Your First Poll</h2>
-    <form className='form' onSubmit={(event)=>{
+    <form className='form' onSubmit={async (event)=>{
       event.preventDefault();
       let isValid=true;
       if(password!==confirm){
         alert('Password must be same');
         isValid=false;
       }
-      const isExistMail=accounts.find((user)=>(user.email===email));
+     
+     const isExistMail=(await getUsers()).find((user)=>user.email===email);
       if(isExistMail){
         alert('Email is already in use');
         isValid=false;
       }
       if(isValid){
-        accounts.push({email:email,password:password});
+        saveUser({email:email,password:password});
         alert('You have successfully signed up, you will be redirected to the login page');
         setTimeout(()=>{
           props.setIsLogin(true);
