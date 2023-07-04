@@ -4,7 +4,7 @@ import { getAnswersByPollId, getPollById, saveAnswer } from "../../firebase";
 import { Navbar } from "../../Components/Navbar";
 import "./PollPage.css";
 import PollResults from "../PollResults/PollResults";
-
+import { DeviceUUID } from "device-uuid";
 export const PollPage = () => {
   const { pollID } = useParams();
   const [poll, setPoll] = useState();
@@ -24,12 +24,14 @@ export const PollPage = () => {
       setAnswers(Array(poll?.questions?.length).fill(""));
       getAnswersByPollId(pollID).then((array) => {
         setFetchedAnswers(array);
+
+        // eslint-disable-next-line no-undef
+        var uuid = new DeviceUUID().get();
+        console.log(uuid);
         array.forEach((element) => {
-          if (element.pollID == pollID && element.userID === navigator.userAgent){
+          if (element.pollID == pollID && element.userID === uuid){
             setIsSubmitted(true);
             setIsEnded(true);
-             console.log(navigator.userAgent)
-             console.log(element.userID === navigator.userAgent)
           }
             
 
@@ -58,9 +60,10 @@ export const PollPage = () => {
       });
       setIsSubmitted(true);
       const userAnswer = {};
+      var uuid = new DeviceUUID().get();
       userAnswer.answers = answers;
       userAnswer.pollID = pollID;
-      userAnswer.userID = navigator.userAgent;
+      userAnswer.userID = uuid;
       saveAnswer(userAnswer);
       
     }
