@@ -14,7 +14,7 @@ export default function ClipboardCopy({ copyText }) {
     // onClick handler function for the copy button
     const handleCopyClick = () => {
       // Asynchronously call copyTextToClipboard
-      copyTextToClipboard(copyText)
+      copyTextToClipboard(`https://${copyText}`)
         .then(() => {
           // If successful, update the isCopied state value
           setIsCopied(true);
