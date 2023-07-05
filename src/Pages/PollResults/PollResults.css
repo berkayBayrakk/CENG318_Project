@@ -23,10 +23,11 @@
   }
   
   .fill {
-    background-color: #239227;
+    background-color: #18ddc3;
     height: 18px;
     border-radius: 5px;
     display: flex;
+    padding: 10px 0;
   }
   
   .percentage-bar span {
@@ -34,5 +35,6 @@
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
+    color: white;
   }
   
