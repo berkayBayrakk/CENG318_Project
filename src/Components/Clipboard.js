@@ -29,7 +29,7 @@ export default function ClipboardCopy({ copyText }) {
     return (
       <div style={{display:'flex' ,height:120}}>
             <div style={{display:'flex',alignItems:'center',paddingRight:12}}>
-                <input type="text" value={copyText} readOnly style={{padding:0,margin:0}}/>
+                <input type="text" value={copyText} readOnly style={{padding:0,margin:0,fontSize:14,width:'100%'}}/>
             </div>
         {/* Bind our handler function to the onClick button property */}
             <div style={{display:'flex',alignItems:'center',flexDirection:'column',height:80}}>

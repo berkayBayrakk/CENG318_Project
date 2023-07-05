@@ -22,6 +22,7 @@ export const Navbar = (props) => {
     };
   
     const handleHelp = () => {
+      navigation('/help');
       // Handle help menu item click
     };
   
@@ -31,11 +32,10 @@ export const Navbar = (props) => {
     };
 
     useEffect(()=>{
-      console.log(userCredentials);
       //TODO change after css changes
-      //if(!userCredentials.isLogged){
-        //navigation('/');
-     // }
+      if(!userCredentials.isLogged){
+        navigation('/');
+      }
     },[])
   
     return (
