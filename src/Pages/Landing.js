@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Pagination } from '../Components/Pagination';
 import { itemList } from '../mock_db';
 import { Navbar } from '../Components/Navbar';
@@ -16,9 +16,38 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
 
+  const [itemsPerPage, setItemsPerPage] = useState(null);
+
+  const updateItemsPerPage = () => {
+    const width = window.innerWidth;
+    if (width > 1200) {
+      setItemsPerPage(4);
+    } else if (width > 900 && width <= 1200) {
+      setItemsPerPage(3);
+    } else if (width > 660 && width <= 900) {
+      setItemsPerPage(2);
+    } else if (width <= 660) {
+      setItemsPerPage(1);
+    }
+  };
+
+  useEffect(() => {
+    updateItemsPerPage();
+
+    const handleResize = () => {
+      updateItemsPerPage();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
   const [items, setItems] = useState([]); // array of items
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
   const {userCredentials } = useContext(CredentialContext);
   const [polls,setPolls]=useState([]);
   const[randomItems,setRandomItems] = useState([]);

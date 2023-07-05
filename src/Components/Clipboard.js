@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import CopyImage from '../images/copy-text.png';
+// import CopyImage from '../images/copy-text.png';
+import CopyImage from '../images/copy-svgrepo-com.svg';
 
 export default function ClipboardCopy({ copyText }) {
     const [isCopied, setIsCopied] = useState(false);
