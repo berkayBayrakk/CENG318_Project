@@ -1,25 +1,26 @@
-import React, { useState ,useContext} from "react";
+import React, { useState, useContext } from "react";
 import "./CreatePoll.css";
 import { Navbar } from "../../Components/Navbar";
 import { getPolls, getUsers, savePoll } from "../../firebase";
-import {CredentialContext} from '../../Providers/Credentials';
-import { Link, useNavigate } from 'react-router-dom';
+import { CredentialContext } from "../../Providers/Credentials";
+import { Link, useNavigate } from "react-router-dom";
 
 const CreatePoll = () => {
+  const isMobile = window.innerWidth <= 768;
+
   const [pollName, setPollName] = useState("");
   const [category, setCategory] = useState("");
   const [questions, setQuestions] = useState([""]);
   const [answers, setAnswers] = useState([["", ""]]);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
-  const [showSettings, setShowSettings] = useState(false);
+  const [showSettings, setShowSettings] = useState(isMobile);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   const { userCredentials } = useContext(CredentialContext);
 
-  const navigation=useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
-
+  const navigation = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const addQuestion = () => {
     setQuestions([...questions, ""]);
@@ -49,21 +50,23 @@ const CreatePoll = () => {
 
   return (
     <div className="create-poll-wrapper">
-      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <div className="container">
         <div className="questions-section">
-          <input
-            type="text"
-            placeholder="Poll Name"
-            value={pollName}
-            onChange={(e) => setPollName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+        <div className="poll-info-container"> {/* Add this container */}
+            <input
+              type="text"
+              placeholder="Poll Name"
+              value={pollName}
+              onChange={(e) => setPollName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            />
+          </div>
           {questions.map((q, index) => (
             <div key={index} className="question-item">
               <input
@@ -133,16 +136,8 @@ const CreatePoll = () => {
                     type="date"
                     value={startDate?.toISOString().substr(0, 10)}
                     onChange={(e) => setStartDate(new Date(e.target.value))}
+                    required
                   />
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    onChange={(e) =>
-                      e.target.checked && setStartDate(new Date())
-                    }
-                  />
-                  Enable
                 </label>
               </div>
               <div className="date-picker-row">
@@ -152,14 +147,8 @@ const CreatePoll = () => {
                     type="date"
                     value={endDate?.toISOString().substr(0, 10)}
                     onChange={(e) => setEndDate(new Date(e.target.value))}
+                    required
                   />
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    onChange={(e) => e.target.checked && setEndDate(new Date())}
-                  />
-                  Enable
                 </label>
               </div>
             </div>
@@ -167,40 +156,54 @@ const CreatePoll = () => {
         </div>
       </div>
 
-      <div>
-        <button onClick={()=>{
-         const poll={};
-         if(!pollName || !category || !endDate || !startDate || 
-          questions.some((element) => element === '' || 
-          answers.some((list)=> list.some((element)=>element===''))) ){
-            alert('Missing Information')
-         }
-         else{
-          poll.name=pollName;
-          const pollQuestions=[]
-          questions.forEach((question,index)=>{
-           pollQuestions.push({title:question,answers:[...answers[index]]})
-           })
-          poll.questions=pollQuestions;
-          poll.startDate=startDate;
-          poll.endDate=endDate;
-          poll.category=category;
-          poll.creatorID=userCredentials.id;
-          savePoll(poll);
-          alert('Poll has been created');
-          setTimeout(()=>{
-            navigation('/main')
-          },1000)
-         
-         }
-         
-
-
-        } }>
+      <div
+        style={{
+          width: "100%",
+          padding: "20px",
+          boxSizing: "border-box",
+          textAlign: "center",
+        }}
+      >
+        <button
+          onClick={() => {
+            const poll = {};
+            if (
+              !pollName ||
+              !category ||
+              !endDate ||
+              !startDate ||
+              questions.some(
+                (element) =>
+                  element === "" ||
+                  answers.some((list) => list.some((element) => element === ""))
+              )
+            ) {
+              alert("Missing Information");
+            } else {
+              poll.name = pollName;
+              const pollQuestions = [];
+              questions.forEach((question, index) => {
+                pollQuestions.push({
+                  title: question,
+                  answers: [...answers[index]],
+                });
+              });
+              poll.questions = pollQuestions;
+              poll.startDate = startDate;
+              poll.endDate = endDate;
+              poll.category = category;
+              poll.creatorID = userCredentials.id;
+              savePoll(poll);
+              alert("Poll has been created");
+              setTimeout(() => {
+                navigation("/main");
+              }, 1000);
+            }
+          }}
+        >
           Create Poll
         </button>
       </div>
-
     </div>
   );
 };
