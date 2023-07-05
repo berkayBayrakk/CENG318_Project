@@ -83,8 +83,42 @@ body {
 }
 
 @media (max-width: 768px) {
+  .navbar {
+      flex-wrap: wrap;
+      height: auto;
+      padding: 10px;
+  }
+  
+  .navbar-left {
+      display: flex;
+      align-items: center;
+      width: 100%;
+  }
+  
+  .navbar-logo-container {
+      cursor: pointer;
+  }
+
+  .navbar-search {
+      flex-grow: 1;
+      margin-left: 10px;
+  }
+
   .navbar-search input[type="text"] {
-    width: 100%;
-    margin-left: 0;
+      width: 100%;
+      margin-left: 0;
+  }
+
+  .navbar-right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-top: 10px;
+  }
+
+  .navbar-create {
+      padding: 5px 10px;
+      flex-grow: 1;
   }
 }
