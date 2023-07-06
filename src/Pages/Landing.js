@@ -5,6 +5,7 @@ import { Navbar } from '../Components/Navbar';
 import { ItemList } from '../Components/ItemList';
 import { CredentialContext } from '../Providers/Credentials';
 import { getPolls } from '../firebase';
+
 function shuffleList(list) {
   for (let i = list.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -70,7 +71,12 @@ const App = () => {
     <div className="app">
       <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
       <div className="content" style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
+      <div>
       <h2>Your Polls</h2>
+      <img src='../images/dice.png'>
+        
+        </img>
+      </div>
       <div className="sidebar" style={{display:'flex', flexDirection:'row',alignItems:'center',justifyContent:'center',height:'240px'}}>
           
           <Pagination Direction={'Left'} currentPage={currentPage} onPageChange={handlePageChange} pageCount={pageCount} itemLength={pageCount} />
@@ -80,7 +86,12 @@ const App = () => {
 
         </div>
         <hr style={{width:'85%'}}></hr>
+        <div>
         <h2>Random Polls</h2>
+        <img src='../images/dice.png'>
+        
+        </img>
+        </div>
 
         <div className="sidebar" style={{display:'flex', flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
         <Pagination Direction={'Left'} currentPage={currentPageRandom} onPageChange={handlePageChangeRandom} pageCount={pageCountRandom} itemLength={pageCountRandom}/>
