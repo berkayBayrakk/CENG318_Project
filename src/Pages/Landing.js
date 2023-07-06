@@ -5,7 +5,8 @@ import { Navbar } from '../Components/Navbar';
 import { ItemList } from '../Components/ItemList';
 import { CredentialContext } from '../Providers/Credentials';
 import { getPolls } from '../firebase';
-import dice from '../images/dice.png'
+import dice from '../images/dice.png';
+import './Landing.css';
 function shuffleList(list) {
   for (let i = list.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -116,7 +117,7 @@ const App = () => {
         <hr style={{width:'85%'}}></hr>
         <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
         <h2>Random Polls</h2>
-        <img  src={dice} style={{width:40,height:40,marginLeft:'15px'}} onClick={()=>{
+        <img className='dice'  src={dice} style={{width:40,height:40,marginLeft:'15px'}} onClick={()=>{
              const randomList=(polls.filter((item)=>item.name.includes(searchQuery))).map((element)=>
              {return {...element,url:`${window.location.hostname}/poll/${element.id}`}}
            );
