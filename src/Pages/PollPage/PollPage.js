@@ -140,7 +140,7 @@ const Answers = (props) => {
       className="a"
       style={
         selectedAnswerIndex === index
-          ? { color: "blue", marginLeft: 15 }
+          ? { backgroundColor: "#18ddc3", marginLeft: 15, marginBottom: "23px"}
           : { marginLeft: 15 }
       }
       key={index}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import CopyImage from '../images/copy-text.png';
-
+// import CopyImage from '../images/copy-text.png';
+import CopyImage from '../images/copy-svgrepo-com.svg';
 export default function ClipboardCopy({ copyText }) {
     const [isCopied, setIsCopied] = useState(false);
     // This is the function we wrote earlier
@@ -28,9 +28,7 @@ export default function ClipboardCopy({ copyText }) {
     }
     return (
       <div style={{display:'flex' ,height:120}}>
-            <div style={{display:'flex',alignItems:'center',paddingRight:12}}>
-                <input type="text" value={copyText} readOnly style={{padding:0,margin:0,fontSize:14,width:'100%'}}/>
-            </div>
+           
         {/* Bind our handler function to the onClick button property */}
             <div style={{display:'flex',alignItems:'center',flexDirection:'column',height:80}}>
                 <button style={{padding:0,height:22}}>

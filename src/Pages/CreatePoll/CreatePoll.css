@@ -103,3 +103,61 @@
   justify-content: space-between;
   margin-bottom: 10px;
 }
+
+.poll-info-container {
+  display: flex;
+}
+
+.poll-info-container input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .questions-section,
+  .answers-section {
+    border-right: none;
+    border-left: none;
+    overflow-y: visible;
+  }
+
+  .settings-section {
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+    padding: 20px 0;
+    position: static;
+    display: block !important;
+  }
+
+  .settings-section.expanded {
+    width: 100%;
+  }
+
+  .toggle-settings {
+    display: none;
+  }
+
+  .date-picker-row {
+    justify-content: center;
+  }
+
+  .create-poll-wrapper {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .poll-info-container {
+    flex-direction: column;
+  }
+
+  .poll-info-container input {
+    margin-right: 0;
+    width: 100%;
+  }
+}
